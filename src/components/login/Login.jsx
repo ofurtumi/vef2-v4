@@ -1,26 +1,44 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Form } from '../form/Form';
+import { Link  } from 'react-router-dom';
+import { FormButton } from '../form-button/FormButton';
 
-import s from './Login.module.css'
+import s from './Login.module.css';
 
-export function Login({ link }) {
-	const [error, setError] = useState(null);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+export const Login = ( props ) => {
+    const [error, setError] = useState(null);
+
+    // console.log('props --> ', props)
 
 	if (error) {
 		return <p>Villa kom upp: {error}</p>;
 	}
 
-    // return <Form link={postLink} />;
-    return (
-        <section>
-            <Form/>
-        <div>
-            <Link className={s.login__link} to="/">Til baka</Link>
-        </div>
-        </section>
-    )
+	// return <Form link={postLink} />;
+	return (
+		<section>
+			<form onSubmit={(event) => {
+                event.preventDefault()
+                props.updLog(true)
+				props.updNam(event.target.username.value)
+            }}>
+				<fieldset>
+					<legend>Notendanafn</legend>
+					<input type="text" id="username" name="username" />
+				</fieldset>
+				<fieldset>
+					<legend>Lykilorð</legend>
+					<input type="password" name="password" id="password" />
+				</fieldset>
+				<div className={s.login__buttons}>
+					<FormButton text='Skrá inn!'/>
+					<FormButton text='Nýskráning'/>
+				</div>
+			</form>
+			<div>
+				<Link className={s.login__link} to="/">
+					Til baka
+				</Link>
+			</div>
+		</section>
+	);
 }
-
-
