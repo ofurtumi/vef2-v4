@@ -1,0 +1,19 @@
+.comment__list {
+	margin: 0 0 1rem 0;
+	padding: 0 1rem;
+	list-style: none;
+}
+
+.comment__list div {
+	/* border-bottom: 1px solid #333 ; */
+	border-top: 1px solid #333 ;
+}
+
+.comment__list p {
+	margin: 0.25em;
+}
+
+.comment__list span {
+	/* float: inline-end; */
+	font-size: 0.75em;
+}

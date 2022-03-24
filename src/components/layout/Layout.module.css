@@ -1,0 +1,26 @@
+.layout {
+	margin-top: 1em;
+}
+
+.layout__header {
+	padding: 0 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+.layout__header a {
+	font-size: 2em;
+	color: black;
+}
+
+.layout__main {
+	margin-bottom: 1rem;
+	padding: 0 1rem;
+}
+
+.layout__footer {
+	padding: 1rem;
+	border-top: 1px solid #333;
+}
