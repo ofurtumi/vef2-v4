@@ -1,0 +1,19 @@
+.login__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login__button {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1.25em;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.login__button:hover, .login__button:focus-visible {
+    background-color: gray;
+}

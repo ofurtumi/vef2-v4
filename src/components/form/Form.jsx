@@ -1,6 +1,8 @@
+import s from './Form.module.css'
+
 export const Form = (props) => {
 	return (
-		<form method="post" action="props.link">
+		<form onSubmit={handleSubmit}>
 			<fieldset>
 				<legend>Notendanafn</legend>
 				<input type="text" id="username" name="username" />
@@ -9,7 +11,16 @@ export const Form = (props) => {
 				<legend>Lykilorð</legend>
 				<input type="password" name="password" id="password" />
 			</fieldset>
-			<button type="submit" className="login-button">Skrá inn!</button>
+            <div className={s.login__buttons}>
+			    <button type="submit" className={s.login__button}>Skrá inn!</button>
+			    <button type="submit" className={s.login__button}>Nýskráning!</button>
+            </div>
 		</form>
 	);
+};
+
+const handleSubmit = (event) => {
+	// Prevent page reload
+	event.preventDefault();
+    console.log('event --> ', event)
 };
