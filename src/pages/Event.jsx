@@ -3,6 +3,7 @@ import { Events } from '../components/events/Events';
 
 export const EventsPage = (props) => {
 	let { id } = useParams();
+	document.title = 'Viðburður'
 
 	return (
 		<Events

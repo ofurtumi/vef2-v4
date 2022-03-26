@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import s from './CommentList.module.css';
 
 export const CommentList = (props) => {
+	console.log('props.comments --> ', props.comments)
 	return (
 		<ul id="comments" className={s.comment__list}>
 			{props.comments.map((reg) => {
@@ -22,4 +23,4 @@ export const CommentList = (props) => {
 			})}
 		</ul>
 	);
-}
+};

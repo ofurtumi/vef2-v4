@@ -6,6 +6,8 @@ export const LoginPage = (props) => {
 		props.updLog(false)
 		props.updNam('')
 	}
+	
+	document.title = 'Innskráning'
 	return (
 		<Login
 			isLog={props.isLog}

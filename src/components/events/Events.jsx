@@ -22,7 +22,7 @@ export const Events = ({
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [eventsItem, setEventsItem] = useState(null);
-  const [userComments, setUserComments] = useState([]);
+	const [userComments, setUserComments] = useState([]);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -32,9 +32,6 @@ export const Events = ({
 			let json;
 
 			const url = new URL(id, apiUrl);
-			// console.log('id --> ', id)
-			// console.log('apiUrl --> ', apiUrl)
-			// console.log('url --> ', url)
 
 			try {
 				const result = await fetch(url);
@@ -92,20 +89,38 @@ export const Events = ({
 				></CommentList>
 			)}
 
+			{!allEventsUrl && eventsItem && (
+				<CommentList comments={userComments}></CommentList>
+			)}
+
 			{!allEventsUrl && isLog && (
 				<form
 					onSubmit={(event) => {
 						event.preventDefault();
-            console.log('skráning --> ', event.target.comment_text.value)
-            console.log('notendanafn --> ', isNam)
-						// <CommentList comments={[{comment:event.target.comment_text.value,name:isNam,username:isNam}]}/>
-						// document.getElementById('comment_text').setValue('');
+
+						console.log('userComments --> ', userComments);
+						let newComm = userComments.concat({
+							comment: event.target.comment_text.value,
+							name: isNam,
+							username: isNam,
+						});
+
+						setUserComments(newComm);
+
+						event.target.comment_text.value = ''
 					}}
 				>
-          <h2 className={s.events__title}>Gat ekki fyrir mitt litla líf birt nýjar skráningar</h2>
-          <h3 className={s.events__title}>er of veikur fyrir þetta shit þær eru í console log</h3>
-					<input type="text" id="comment_text" name="comment_text" />
-					<FormButton text="Birta skráningu" />
+					<div className={s.events__registration}>
+						<input
+							type="text"
+							id="comment_text"
+							name="comment_text"
+							className={s.events__registration__input}
+						/>
+					</div>
+					<div className={s.events__registration}>
+						<FormButton text="Birta skráningu" />
+					</div>
 				</form>
 			)}
 
